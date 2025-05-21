@@ -13,6 +13,14 @@ class ProductManager {
   List<IAPItem> _productItems = [];
   List<IAPItem> get productItems => _productItems;
 
+  // Method to get a single item by its ID
+  IAPItem? getItemById(String id) {
+    return _subscriptionItems.firstWhere(
+      (item) => item.productId == id,
+      orElse: () => null,
+    );
+  }
+  
   // Method to filter items by IDs
   List<IAPItem> getItemsByIds(List<String> ids) {
     return _productItems.where((item) => ids.contains(item.productId)).toList();
